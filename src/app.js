@@ -4,20 +4,22 @@ const player = {
   "x": 3,
   "y": 3,
   "size": 1,
-  "speed": 1
+  "speed": 1,
+  "is_colliding": false
 }
 
 if (canvas.getContext) {
   const ctx = canvas.getContext("2d");
 
   document.getElementById("debugBtn").addEventListener("click", () => debugPre.classList.toggle("active"))
-  const debug = (x, y) => {
+  const debug = (x, y, is_colliding) => {
     const debugPre = document.getElementById("debugPre")
 
     debugPre.innerHTML = `
 <strong style="color: green;">player</strong> = {
   "player.<strong style="color: #ff9933;">x</strong>": <span style="color: blueviolet;">${x}</span>,
-  "player.<strong style="color: #ff9933;">y</strong>": <span style="color: blueviolet;">${y}</span>
+  "player.<strong style="color: #ff9933;">y</strong>": <span style="color: blueviolet;">${y}</span>,
+  "is_colliding": <span style="color: blueviolet;">${is_colliding}</span>
 }
       `
   }
@@ -28,20 +30,33 @@ if (canvas.getContext) {
   canvas.height = 10;
 
   function draw() {
+    is_colliding(player)
     ctx.fillStyle = "white";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     square(ctx, player.x, player.y, player.size, player.size, player.color)
-    debug(player.x, player.y)
+    debug(player.x, player.y, player.is_colliding)
+
+  }
+
+  function is_colliding(object) {
+    // Verifica colisão horizontal e vertical (x)
+    if (object.x == canvas.height - object.size || object.x == 0
+      ||
+      object.y == canvas.height - object.size || object.y == 0) {
+      object.is_colliding = true
+    } else {
+      object.is_colliding = false
+    }
   }
 
   window.requestAnimationFrame(() => {
     draw()
 
     document.addEventListener("keypress", event => {
+      //#region MOVIMENTO
       if (event.key == "ArrowRight" && player.x < canvas.width - player.size) {
         player.x += player.speed
         draw()
-
       }
       if (event.key == "ArrowDown" && player.y < canvas.height - player.size) {
         player.y += player.speed
@@ -55,7 +70,7 @@ if (canvas.getContext) {
         player.y -= player.speed
         draw()
       }
-
+      //#endregion
     })
   });
 
