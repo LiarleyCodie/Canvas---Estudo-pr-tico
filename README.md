@@ -1,4 +1,4 @@
-# CANVAS | UM ESTUDO DE CASO
+# CANVAS | UM ESTUDO PRATICO
 ---
 ## A Lâmpada de... sabedoria?
 Depois de re-datilografar vários exemplos da MDN a respeito de Canvas, resolvi fazer um pequeno estudo de caso.
