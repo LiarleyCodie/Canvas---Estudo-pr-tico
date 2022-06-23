@@ -26,14 +26,17 @@ if (canvas.getContext) {
   debug(player.x, player.y);
 
   // if browser support canvas.
-  canvas.width = 10;
-  canvas.height = 10;
+  canvas.width = 16;
+  canvas.height = 16;
 
   function draw() {
     is_colliding(player)
     ctx.fillStyle = "white";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    square(ctx, player.x, player.y, player.size, player.size, player.color)
+    square(ctx, player.x, player.y, player.size, player.color)
+
+    square(ctx, 11, 8, player.size, "grey")
+
     debug(player.x, player.y, player.is_colliding)
 
   }
@@ -49,13 +52,15 @@ if (canvas.getContext) {
     }
   }
 
-  window.requestAnimationFrame(() => {
+  requestAnimationFrame(() => {
     draw()
 
     document.addEventListener("keypress", event => {
       //#region MOVIMENTO
       if (event.key == "ArrowRight" && player.x < canvas.width - player.size) {
         player.x += player.speed
+
+
         draw()
       }
       if (event.key == "ArrowDown" && player.y < canvas.height - player.size) {
@@ -86,9 +91,9 @@ if (canvas.getContext) {
 function draw(ctx) {
 }
 
-function square(ctx, x, y, w, h, color) {
+function square(ctx, x, y, size, color) {
   ctx.fillStyle = color;
-  ctx.fillRect(x, y, w, h)
+  ctx.fillRect(x, y, size, size)
 }
 
 function circle(ctx, x, y, radius, color) {
