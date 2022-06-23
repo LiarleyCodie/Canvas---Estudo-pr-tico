@@ -11,7 +11,7 @@ Resolvi recriar esse minigame, como um estudo prático. Levei mais de uma semana
 
 **O fato é que** eu usei muito do próprio JavaScript para manipular a DOM e criar varios dos elementos e, claramente, a lógica do jogo. Até que cheguei a um resultado satisfatório.
 
-[imagem do repositório citado]
+![imagem do repositório citado](https://i.ibb.co/HPtZRwg/2022-06-23-15-14.png)
 
 ---
 ## OK... mas e esse projeto aqui?
@@ -23,4 +23,6 @@ O player não transborda a tela e, logo ao lado, existe um "debug" que retorna a
 
 tentei usar a função **requestAnimationFrame**, mas consegui torna-la inutil nesse projeto. Por claramente não conhece-la e não saber aplicar, com ou sem ela, ela se tornou inutil de igual forma.
 
-[fotos do projeto]
+![foto 1 do projeto](https://i.ibb.co/KXfLWDt/2022-06-23-15-11.png)
+![foto 2 do projeto](https://i.ibb.co/pRZwR7s/2022-06-23-15-12-1.png)
+![foto 3 do projeto](https://i.ibb.co/F82d83d/2022-06-23-15-12.png)
